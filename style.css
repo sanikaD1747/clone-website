@@ -1,0 +1,659 @@
+/* Design System: Grounded Editorial */
+:root {
+    /* Colors - Earth & Mineral Palette */
+    --c-bg: #FAF9F6;
+    /* Off-White/Vellum */
+    --c-bg-alt: #E8E4DD;
+    /* Warm Stone/Taupe */
+    --c-primary: #2B2D42;
+    /* Deep Space Navy (Text, Dark BGs) */
+    --c-accent: #B07D62;
+    /* Antique Copper/Clay (Buttons, Highlights) */
+    --c-accent-hover: #9A6B53;
+    /* Darker Clay */
+    --c-white: #FFFFFF;
+    --c-line: #D1CEC7;
+    /* Subtle borders */
+
+    /* Fonts */
+    --f-heading: 'Playfair Display', serif;
+    --f-body: 'Lato', sans-serif;
+
+    /* Spacing */
+    --s-container: 5%;
+    --s-section: 6rem;
+    --s-gap: 5rem;
+
+    /* Radii & Shadows */
+    --r-btn: 4px;
+    /* Sophisticated slight curve */
+}
+
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--c-bg);
+    color: var(--c-primary);
+    font-family: var(--f-body);
+    line-height: 1.7;
+    /* Increased for readability */
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--f-heading);
+    color: var(--c-primary);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* Utilities */
+.bg-cream {
+    background-color: var(--c-bg);
+}
+
+.bg-lavender {
+    background-color: var(--c-bg-alt);
+}
+
+/* Mapped to Stone */
+.bg-green {
+    background-color: var(--c-primary);
+    color: var(--c-white);
+}
+
+/* Mapped to Navy */
+.color-white {
+    color: var(--c-white);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* Layout Classes */
+.section {
+    padding: var(--s-section) var(--s-container);
+    display: grid;
+    gap: var(--s-gap);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .split-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .split-layout {
+        gap: 3rem;
+    }
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    border: 1px solid var(--c-primary);
+    background: transparent;
+    color: var(--c-primary);
+    text-transform: uppercase;
+    font-family: var(--f-body);
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-radius: var(--r-btn);
+}
+
+.btn:hover {
+    background: var(--c-primary);
+    /* Navy fill on hover */
+    color: var(--c-white);
+    transform: translateY(-2px);
+}
+
+/* Special Button Style for "Get Started" (Green/Navy BG section) */
+.bg-green .btn {
+    border-color: var(--c-accent);
+    background-color: var(--c-accent);
+    color: var(--c-white);
+}
+
+.bg-green .btn:hover {
+    background-color: var(--c-accent-hover);
+    border-color: var(--c-accent-hover);
+}
+
+/* Header */
+header {
+    padding: 2.5rem var(--s-container);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--c-bg);
+}
+
+.mobile-menu-toggle {
+    display: none;
+}
+
+.logo {
+    font-size: 2rem;
+    font-family: var(--f-heading);
+    font-weight: 600;
+    /* Bold logo */
+    color: var(--c-accent);
+    /* Logo in Accent Color */
+}
+
+nav {
+    display: flex;
+    gap: 2.5rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--c-primary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 2px;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--c-accent);
+    transition: width 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Hero */
+.hero-title {
+    font-size: 4.8rem;
+    /* Larger, more editorial */
+    margin-bottom: 2rem;
+    line-height: 1.1;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: #555;
+    /* Slightly softer text for subheads */
+}
+
+/* Images */
+.img-arch {
+    width: 100%;
+    aspect-ratio: 0.85;
+    object-fit: cover;
+    border-top-left-radius: 999px;
+    border-top-right-radius: 999px;
+    filter: sepia(10%) contrast(95%);
+    /* Subtle vintage warm feel */
+}
+
+/* Specialties Section */
+.specialties-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+}
+
+@media (max-width: 768px) {
+    .specialties-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.specialty-card {
+    border: 1px solid var(--c-line);
+    /* Softer border */
+    padding: 3rem 2rem;
+    text-align: center;
+    background: var(--c-white);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.specialty-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border-color: var(--c-accent);
+}
+
+.specialty-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--c-accent);
+    /* Highlight titles */
+}
+
+.specialty-card .arch-mask {
+    width: 100%;
+    height: 250px;
+    margin-top: 2rem;
+    border-top-left-radius: 999px;
+    border-top-right-radius: 999px;
+    overflow: hidden;
+}
+
+.specialty-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Support List */
+.problem-list {
+    list-style: none;
+    margin-top: 2rem;
+}
+
+.problem-list li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1.2rem;
+    font-size: 1.05rem;
+}
+
+.problem-list li::before {
+    content: "✦";
+    /* prettier bullet */
+    position: absolute;
+    left: 0;
+    color: var(--c-accent);
+    font-size: 0.8rem;
+    top: 6px;
+}
+
+/* Accordion Styles */
+.accordion {
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.accordion-item {
+    border-bottom: 1px solid var(--c-line);
+    padding: 1.8rem 0;
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background: none;
+    border: none;
+    font-family: var(--f-heading);
+    font-size: 1.5rem;
+    color: var(--c-primary);
+    cursor: pointer;
+    text-align: left;
+    padding: 0;
+    transition: color 0.3s;
+}
+
+.accordion-header:hover {
+    color: var(--c-accent);
+}
+
+.accordion-content {
+    display: none;
+    padding-top: 1.2rem;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #444;
+}
+
+.accordion-content.active {
+    display: block;
+}
+
+/* Footer */
+footer {
+    padding: 5rem var(--s-container);
+    background-color: var(--c-primary);
+    /* Inverted footer for strong anchor */
+    color: var(--c-white);
+}
+
+footer h3 {
+    color: var(--c-accent);
+    /* Accent color used on dark footer */
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+}
+
+footer a {
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+footer a:hover {
+    color: var(--c-white);
+    text-decoration: underline;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+    margin-bottom: 4rem;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: left;
+    }
+
+    .footer-content .col.text-right {
+        text-align: left;
+        /* Reset alignment on mobile */
+    }
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 0.85rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.footer-links a {
+    margin: 0 0.8rem;
+    font-size: 0.8rem;
+}
+
+/* Office Section */
+.office-intro {
+    max-width: 700px;
+    margin: 0 auto 3rem;
+}
+
+.office-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .office-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.office-card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: var(--r-btn);
+    filter: sepia(10%) contrast(95%);
+    transition: transform 0.3s ease;
+}
+
+.office-card:hover img {
+    transform: scale(1.02);
+}
+
+.office-card p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--c-accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 
+   ----------------------------------------
+   Responsive Adjustments 
+   ----------------------------------------
+*/
+
+@media (max-width: 900px) {
+    :root {
+        --s-section: 4rem;
+        /* Reduce section padding */
+        --s-gap: 3rem;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+        /* Smaller hero title */
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --s-section: 3rem;
+        --s-container: 1.5rem;
+        /* Reduce side usage */
+    }
+
+    /* Header & Nav */
+    /* Header & Nav */
+    header {
+        /* Keep it as a row for logo and burger */
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        position: relative;
+        /* For absolute positioning of nav */
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        cursor: pointer;
+        z-index: 1000;
+    }
+
+    .mobile-menu-toggle span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: var(--c-primary);
+        border-radius: 3px;
+        transition: all 0.3s ease;
+    }
+
+    .nav-links {
+        display: none;
+        /* Hidden by default on mobile */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--c-bg);
+        padding: 2rem;
+        gap: 1.5rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 0.8rem 0;
+        font-size: 1.2rem;
+        border-bottom: 1px solid var(--c-line);
+    }
+
+    .nav-links a:last-child {
+        border-bottom: none;
+    }
+
+    /* Common Typography */
+    .hero-title {
+        font-size: 2.8rem;
+    }
+
+    h2 {
+        font-size: 2rem !important;
+        /* Override inline styles if necessary, though ideally we'd remove inline styles */
+    }
+
+    p {
+        font-size: 1rem !important;
+    }
+
+    /* Buttons */
+    .btn {
+        width: 100%;
+        text-align: center;
+        padding: 1rem 2rem;
+    }
+
+    /* Accordion */
+    .accordion-header {
+        font-size: 1.2rem;
+    }
+}
+
+/* 
+   ----------------------------------------
+   New CTA Section Styles 
+   ----------------------------------------
+*/
+
+/* CTA Section Specific Styles */
+.cta-section {
+    padding: 8rem var(--s-container);
+    /* More breathing room */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.cta-section h2 {
+    color: var(--c-white);
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.cta-section p {
+    color: var(--c-white);
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    opacity: 0.9;
+}
+
+/* Custom override for the CTA button to ensure it looks impactful */
+.cta-section .btn {
+    border-color: var(--c-white);
+    color: var(--c-white);
+    background: transparent;
+    padding: 1.2rem 3rem;
+    font-size: 1rem;
+}
+
+.cta-section .btn:hover {
+    background: var(--c-white);
+    color: var(--c-primary);
+    /* Navy text on white button */
+    border-color: var(--c-white);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+    .cta-section {
+        padding: 6rem var(--s-container);
+    }
+
+    .cta-section h2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .cta-section {
+        padding: 5rem 1.5rem;
+    }
+
+    .cta-section h2 {
+        font-size: 2rem;
+    }
+
+    .cta-section p {
+        font-size: 1.1rem;
+    }
+
+    /* Override the global mobile button stretch if needed, 
+       or let it be full width if that's the mobile design pattern. 
+       Use 'display: inline-block' or 'width: auto' to prevent full width. */
+    .cta-section .btn {
+        width: auto;
+        display: inline-block;
+        min-width: 250px;
+        /* Ensure it's not too small though */
+    }
+}
